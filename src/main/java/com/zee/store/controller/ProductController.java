@@ -5,6 +5,7 @@ import com.zee.store.entity.Product;
 import com.zee.store.repository.ProductRepository;
 import com.zee.store.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -32,7 +33,7 @@ public class ProductController {
     public ResponseEntity<ProductDto> addProduct(@RequestBody Product product) {
         ProductDto product1 = productService.addProduct(product);
         return ResponseEntity
-                .ok()
+                .status(HttpStatus.CREATED)
                 .body(product1);
     }
 }
